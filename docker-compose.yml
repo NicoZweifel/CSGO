@@ -1,0 +1,64 @@
+version: '3.9'
+services:
+  csgo:
+    build:
+      context: bullseye
+    network_mode: "host"
+    volumes:
+      - csgo-data:/home/steam/csgo-dedicated/
+    restart: always
+    environment:
+      SRCDS_TOKEN: changeme
+      SRCDS_RCONPW: changeme
+      SRCDS_PW: changeme
+      SRCDS_PORT: 27015
+      SRCDS_TV_PORT: 27020
+      SRCDS_NET_PUBLIC_ADDRESS: 0 
+      SRCDS_IP: 0
+      SRCDS_LAN: 0
+      SRCDS_FPSMAX: 300
+      SRCDS_TICKRATE: 128
+      SRCDS_MAXPLAYERS: 14
+      SRCDS_STARTMAP: de_dust2
+      SRCDS_REGION: 3
+      SRCDS_MAPGROUP: mg_active
+      SRCDS_GAMETYPE: 0
+      SRCDS_GAMEMODE: 1
+      SRCDS_HOSTNAME: New CSGO Server
+      SRCDS_WORKSHOP_START_MAP: 0
+      SRCDS_HOST_WORKSHOP_COLLECTION: 0
+      SRCDS_WORKSHOP_AUTHKEY: "" 
+      ADDITIONAL_ARGS: "" 
+  teamspeak:
+    image: teamspeak
+    restart: always
+    ports:
+      - 9987:9987/udp
+      - 10011:10011
+      - 30033:30033
+    environment:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: db
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_PASSWORD: example
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: teamspeak
+    volumes:
+      - "./ts-data:/var/lib/mysql"
+      
+volumes:
+  csgo-data:
+    name: csgo-data
+    driver_opts:
+      o: bind
+      device: ./csgo-data
+      type: none
+   
