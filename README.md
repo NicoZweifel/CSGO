@@ -1,3 +1,12 @@
+
+# Docker-compose CS:GO + Teamspeak 
+
+- Set the environment variables in [docker-compose.yml](docker-compose.yml) or in a .env file.
+
+- Run ```docker-compose up```
+
+# based on:
+
 [![](https://img.shields.io/codacy/grade/1a72f69b97bc46cfaec6cb77819beb66)](https://hub.docker.com/r/cm2network/csgo/) [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cm2network/csgo)](https://hub.docker.com/r/cm2network/csgo/) [![Docker Stars](https://img.shields.io/docker/stars/cm2network/csgo.svg)](https://hub.docker.com/r/cm2network/csgo/) [![Docker Pulls](https://img.shields.io/docker/pulls/cm2network/csgo.svg)](https://hub.docker.com/r/cm2network/csgo/) [![](https://img.shields.io/docker/image-size/cm2network/csgo)](https://img.shields.io/docker/image-size/cm2network/csgo) [![Discord](https://img.shields.io/discord/747067734029893653)](https://discord.gg/7ntmAwM)
 # Supported tags and respective `Dockerfile` links
 -	[`base`, `latest` (*bullseye/Dockerfile*)](https://github.com/CM2Walki/CSGO/blob/master/bullseye/Dockerfile)
